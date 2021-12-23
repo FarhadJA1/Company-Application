@@ -38,9 +38,9 @@ namespace Repository.Implementations
             throw new NotImplementedException();
         }
 
-        public Company Get(Predicate<Company> filter)
+        public Company Get(Predicate<Company> filter = null)
         {
-            throw new NotImplementedException();
+            return filter == null ? null : ApplicationDbContext<Company>.database.Find(filter); 
         }
 
         public List<Company> GetAll(Predicate<Company> filter)

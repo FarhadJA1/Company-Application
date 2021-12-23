@@ -7,16 +7,20 @@ using System.Text;
 
 namespace Service.Services
 {
-    class Company_Service : ICompanyService
+    public class CompanyService : ICompanyService
     {
+        private int Count { get; set; }
         private CompanyRepository companyRepository;
-        public Company_Service()
+        public CompanyService()
         {
             companyRepository = new CompanyRepository();
         }
         public Company Create(Company company)
         {
-            throw new NotImplementedException();
+            company.ID = Count;
+            companyRepository.Create(company);
+            Count++;
+            return company;
         }
 
         public void Delete(Company company)
@@ -34,9 +38,11 @@ namespace Service.Services
             throw new NotImplementedException();
         }
 
-        public Company GetCompanyByID(Predicate<Company> filter)
+        public Company GetCompanyByID(int id)
         {
-            throw new NotImplementedException();
+            return companyRepository.Get(m => m.ID == id);
+            
+            
         }
 
         public Company Update(string name, string address)

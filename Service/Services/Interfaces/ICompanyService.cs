@@ -10,7 +10,7 @@ namespace Service.Interfaces
         Company Create(Company company);
         Company Update(string name, string address);
         void Delete(Company company);
-        Company GetCompanyByID(Predicate<Company> filter);
+        Company GetCompanyByID(int id);
         List<Company> GetAllCompaniesByName(Predicate<Company> filter);
         List<Company> GetAllCompanies(Predicate<Company> filter);
 

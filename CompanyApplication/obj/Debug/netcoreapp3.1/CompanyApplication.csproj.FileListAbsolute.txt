@@ -12,3 +12,10 @@ C:\Users\ASUS\Desktop\Console Application\Company Application\CompanyApplication
 C:\Users\ASUS\Desktop\Console Application\Company Application\CompanyApplication\CompanyApplication\obj\Debug\netcoreapp3.1\CompanyApplication.dll
 C:\Users\ASUS\Desktop\Console Application\Company Application\CompanyApplication\CompanyApplication\obj\Debug\netcoreapp3.1\CompanyApplication.pdb
 C:\Users\ASUS\Desktop\Console Application\Company Application\CompanyApplication\CompanyApplication\obj\Debug\netcoreapp3.1\CompanyApplication.genruntimeconfig.cache
+C:\Users\ASUS\Desktop\Console Application\Company Application\CompanyApplication\CompanyApplication\bin\Debug\netcoreapp3.1\Domain.dll
+C:\Users\ASUS\Desktop\Console Application\Company Application\CompanyApplication\CompanyApplication\bin\Debug\netcoreapp3.1\Repository.dll
+C:\Users\ASUS\Desktop\Console Application\Company Application\CompanyApplication\CompanyApplication\bin\Debug\netcoreapp3.1\Service.dll
+C:\Users\ASUS\Desktop\Console Application\Company Application\CompanyApplication\CompanyApplication\bin\Debug\netcoreapp3.1\Service.pdb
+C:\Users\ASUS\Desktop\Console Application\Company Application\CompanyApplication\CompanyApplication\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\Users\ASUS\Desktop\Console Application\Company Application\CompanyApplication\CompanyApplication\bin\Debug\netcoreapp3.1\Repository.pdb
+C:\Users\ASUS\Desktop\Console Application\Company Application\CompanyApplication\CompanyApplication\obj\Debug\netcoreapp3.1\CompanyApplication.csproj.CopyComplete
