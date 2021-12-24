@@ -1,4 +1,6 @@
-﻿using Domain.Models;
+﻿using CompanyApplication.Controller;
+using Domain.Models;
+using Service.Helpers;
 using Service.Interfaces;
 using Service.Services;
 using Service.Services.Helpers;
@@ -10,15 +12,17 @@ namespace CompanyApplication
     {
         static void Main(string[] args)
         {
+            CompanyController companyController = new CompanyController();
+            
             Helpers.WriteToConsole(ConsoleColor.DarkCyan, "WELCOME!\n");
             Helpers.WriteToConsole(ConsoleColor.DarkCyan, "Please, select option:\n");
-            CompanyService companyService = new CompanyService();
+            
+            
             while (true)
             {
-                Helpers.WriteToConsole(ConsoleColor.DarkMagenta, "1 - Create Company    4 - Get Company by ID             7 - Create Employee     10 - Delete Employee\n");
-                Helpers.WriteToConsole(ConsoleColor.DarkMagenta, "2 - Update Company    5 - Get All Companies by Name     8 - Update Employee     11 - Get Employee by Age\n");
-                Helpers.WriteToConsole(ConsoleColor.DarkMagenta, "3 - Delete Company    6 - Get All Companies             9 - Get Employee by ID  12 - Get All Employes by Company ID\n");
-                
+
+                ShowMenu();
+
                 EnterOption: string selectOption = Console.ReadLine();
                 int option;
                 bool IsTrueOption = int.TryParse(selectOption, out option);
@@ -27,75 +31,45 @@ namespace CompanyApplication
                 {
                     switch (option)
                     {
-                        case 1:
-                            Helpers.WriteToConsole(ConsoleColor.DarkCyan, "Add Company Name:");
-                            string companyName = Console.ReadLine();
-                            Helpers.WriteToConsole(ConsoleColor.DarkCyan, "Add Company Address:");
-                            string address = Console.ReadLine();
-                            Company company = new Company();
-                            company.Name = companyName;
-                            company.Address = address;
+                       case (int)MyEnum.Menu.CreateCompany:
+                            companyController.Create();
+                            break;
 
-                            var createResult = companyService.Create(company);
-                            if(createResult != null)
-                            {
-                                Helpers.WriteToConsole(ConsoleColor.DarkGreen, $"{company.ID} - {companyName} Successfully Created !");
-                            }
-                            else
-                            {
-                                Helpers.WriteToConsole(ConsoleColor.Red, "Something Went Wrong !\n");
-                            }
+                        case (int)MyEnum.Menu.UpdateCompany:
                             break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                        case 4:
-                            Helpers.WriteToConsole(ConsoleColor.DarkCyan, "Add Company ID:\n");
-                            
-                            EnterID: string compID = Console.ReadLine();
-                            int id;
-                            bool isIdTrue = int.TryParse(compID, out id);
-                            
-                            if (isIdTrue)
-                            {
-                                var getIdResult = companyService.GetCompanyByID(id);
-                                if (getIdResult == null)
-                                {
-                                    Helpers.WriteToConsole(ConsoleColor.Red, "Company was not Found !\n");
-                                    goto EnterID;
-                                }
-                                else
-                                {
-                                    Helpers.WriteToConsole(ConsoleColor.DarkGreen, $"{company.ID} - {company.Name} was Successfully Fount !\n");
-                                }
 
-                            }
-                            else
-                            {
-                                Helpers.WriteToConsole(ConsoleColor.Red, "Try Again !\n");
-                                goto EnterID;
-                            }
-                            
-                           
-                            
+                        case (int)MyEnum.Menu.DeleteCompany:
+                            companyController.Delete();
                             break;
-                        
-                        case 5:
+
+                        case (int)MyEnum.Menu.GetCompanyByID:
+                            companyController.GetByID();
                             break;
-                        case 6:
+
+                        case (int)MyEnum.Menu.GetAllCompaniesByName:
+                            companyController.GetAllByName();
                             break;
-                        case 7:
+
+                        case (int)MyEnum.Menu.GetAllCompanies:
+                            companyController.GetAllCompanies();
                             break;
-                        case 8:
+
+                        case (int)MyEnum.Menu.CreateEmployee:
                             break;
-                        case 9:
+
+                        case (int)MyEnum.Menu.UpdateEmployee:
                             break;
-                        case 10:
+
+                        case (int)MyEnum.Menu.GetEmployeeByID:
                             break;
-                        case 11:
+
+                        case (int)MyEnum.Menu.DeleteEmployee:
                             break;
-                        case 12:
+
+                        case (int)MyEnum.Menu.GetEmployeeByAge:
+                            break;
+
+                        case (int)MyEnum.Menu.GetAllEmployeeByCompanyID:
                             break;
                     }
                     
@@ -104,15 +78,25 @@ namespace CompanyApplication
                 {
                     goto EnterOption;
                 }
-            
-            
+                       
             }
 
-            
-
-            
-
+        }
+        private static void ShowMenu()
+        {
+            Helpers.WriteToConsole(ConsoleColor.DarkMagenta, "1 - Create Company    4 - Get Company by ID             7 - Create Employee     10 - Delete Employee\n");
+            Helpers.WriteToConsole(ConsoleColor.DarkMagenta, "2 - Update Company    5 - Get All Companies by Name     8 - Update Employee     11 - Get Employee by Age\n");
+            Helpers.WriteToConsole(ConsoleColor.DarkMagenta, "3 - Delete Company    6 - Get All Companies             9 - Get Employee by ID  12 - Get All Employes by Company ID\n");
 
         }
     }
+   
 }
+                    
+            
+            
+
+            
+
+            
+

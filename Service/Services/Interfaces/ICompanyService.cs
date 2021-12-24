@@ -11,8 +11,8 @@ namespace Service.Interfaces
         Company Update(string name, string address);
         void Delete(Company company);
         Company GetCompanyByID(int id);
-        List<Company> GetAllCompaniesByName(Predicate<Company> filter);
-        List<Company> GetAllCompanies(Predicate<Company> filter);
+        List<Company> GetAllCompaniesByName(string name);
+        List<Company> GetAllCompanies();
 
 
     }

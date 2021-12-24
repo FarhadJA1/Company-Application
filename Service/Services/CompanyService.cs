@@ -25,17 +25,18 @@ namespace Service.Services
 
         public void Delete(Company company)
         {
-            throw new NotImplementedException();
+            var deleteResult = GetCompanyByID(company.ID);
+            companyRepository.Delete(deleteResult);
         }
 
-        public List<Company> GetAllCompanies(Predicate<Company> filter)
+        public List<Company> GetAllCompaniesByName(string name)
         {
-            throw new NotImplementedException();
+            return companyRepository.GetAll(m => m.Name == name);
         }
 
-        public List<Company> GetAllCompaniesByName(Predicate<Company> filter)
+        public List<Company> GetAllCompanies()
         {
-            throw new NotImplementedException();
+            return companyRepository.GetAll(null);
         }
 
         public Company GetCompanyByID(int id)
@@ -49,5 +50,7 @@ namespace Service.Services
         {
             throw new NotImplementedException();
         }
+
+      
     }
 }
