@@ -13,6 +13,7 @@ namespace CompanyApplication
         static void Main(string[] args)
         {
             CompanyController companyController = new CompanyController();
+            EmployeeController employeeController = new EmployeeController();
             
             Helpers.WriteToConsole(ConsoleColor.DarkCyan, "WELCOME!\n");
             Helpers.WriteToConsole(ConsoleColor.DarkCyan, "Please, select option:\n");
@@ -36,6 +37,7 @@ namespace CompanyApplication
                             break;
 
                         case (int)MyEnum.Menu.UpdateCompany:
+                            companyController.Update();
                             break;
 
                         case (int)MyEnum.Menu.DeleteCompany:
@@ -55,6 +57,7 @@ namespace CompanyApplication
                             break;
 
                         case (int)MyEnum.Menu.CreateEmployee:
+                            employeeController.Create();
                             break;
 
                         case (int)MyEnum.Menu.UpdateEmployee:
@@ -64,6 +67,7 @@ namespace CompanyApplication
                             break;
 
                         case (int)MyEnum.Menu.DeleteEmployee:
+                            employeeController.Delete();
                             break;
 
                         case (int)MyEnum.Menu.GetEmployeeByAge:

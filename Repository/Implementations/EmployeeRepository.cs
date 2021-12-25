@@ -8,83 +8,77 @@ using System.Text;
 
 namespace Repository.Implementations
 {
-    public class CompanyRepository : IRepository<Company>
+    public class EmployeeRepository : IRepository<Employee>
     {
-        public bool Create(Company company)
+        public bool Create(Employee employee)
         {
             try
             {
-                if (company == null)
+                if (employee == null)
                     throw new CustomException("Company is null");
-                ApplicationDbContext<Company>.database.Add(company);
+                ApplicationDbContext<Employee>.database.Add(employee);
                 return true;
-
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
                 return false;
             }
         }
 
-
-        public bool Delete(Company company)
+        public bool Delete(Employee employee)
         {
-            try
-            {
-                ApplicationDbContext<Company>.database.Remove(company);
+           try
+           {
+                ApplicationDbContext<Employee>.database.Remove(employee);
                 return true;
 
-            }
-            catch (Exception ex)
-            {
-
+           }
+           catch (Exception ex)
+           {
                 Console.WriteLine(ex.Message);
                 return false;
-            }
+           }
+            
         }
 
-        public Company Get(Predicate<Company> filter = null)
+        public Employee Get(Predicate<Employee> filter)
         {
             if (filter == null)
                 throw new CustomException("Filter is not Detected");
-            
-            return filter == null ? null : ApplicationDbContext<Company>.database.Find(filter);
-           
-                
+
+            return filter == null ? null : ApplicationDbContext<Employee>.database.Find(filter);
         }
 
-        public List<Company> GetAll(Predicate<Company> filter)
+        public List<Employee> GetAll(Predicate<Employee> filter)
         {
-            
             try
             {
-                return filter == null ? ApplicationDbContext<Company>.database : ApplicationDbContext<Company>.database.FindAll(filter);
-
+                return filter == null ? ApplicationDbContext<Employee>.database : ApplicationDbContext<Employee>.database.FindAll(filter);
 
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
                 return null;
             }
         }
 
-        public bool Update(Company company)
+        public bool Update(Employee employee)
         {
             try
             {
-                var getResult = Get(m => m.ID == company.ID);
-                
-                if(getResult != null)
-                {
-                    if(!string.IsNullOrEmpty(company.Name))
-                        getResult.Name = company.Name;
+                var getResult = Get(m => m.ID == employee.ID);
 
-                    if (!string.IsNullOrEmpty(company.Address))
-                        getResult.Address = company.Address;
+                if (getResult != null)
+                {
+                    if (!string.IsNullOrEmpty(employee.Name))
+                        getResult.Name = employee.Name;
+
+                    if (!string.IsNullOrEmpty(employee.Surname))
+                        getResult.Surname = employee.Surname;
+
+                    
 
                     return true;
                 }

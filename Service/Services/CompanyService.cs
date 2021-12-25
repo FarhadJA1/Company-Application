@@ -46,9 +46,12 @@ namespace Service.Services
             
         }
 
-        public Company Update(string name, string address)
+        public Company Update(int id, Company company)
         {
-            throw new NotImplementedException();
+            var idResult = GetCompanyByID(id);
+            company.ID = idResult.ID;
+            companyRepository.Update(company);
+            return company;
         }
 
       

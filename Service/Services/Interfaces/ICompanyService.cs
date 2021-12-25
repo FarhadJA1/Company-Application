@@ -8,7 +8,7 @@ namespace Service.Interfaces
     public interface ICompanyService
     {
         Company Create(Company company);
-        Company Update(string name, string address);
+        Company Update(int id, Company company);
         void Delete(Company company);
         Company GetCompanyByID(int id);
         List<Company> GetAllCompaniesByName(string name);
