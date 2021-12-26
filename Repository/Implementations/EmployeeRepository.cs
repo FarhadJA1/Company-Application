@@ -42,7 +42,7 @@ namespace Repository.Implementations
             
         }
 
-        public Employee Get(Predicate<Employee> filter)
+        public Employee Get(Predicate<Employee> filter = null)
         {
             if (filter == null)
                 throw new CustomException("Filter is not Detected");
@@ -77,8 +77,13 @@ namespace Repository.Implementations
 
                     if (!string.IsNullOrEmpty(employee.Surname))
                         getResult.Surname = employee.Surname;
+                    if (!string.IsNullOrEmpty(employee.Age))
+                        getResult.Age = employee.Age;
+                    if(employee.Company!=null)
+                        getResult.Company = employee.Company;
 
-                    
+
+
 
                     return true;
                 }

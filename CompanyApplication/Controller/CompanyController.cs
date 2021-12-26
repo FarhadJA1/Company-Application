@@ -17,22 +17,29 @@ namespace CompanyApplication.Controller
 
         public void Create()
         {
-            Helpers.WriteToConsole(ConsoleColor.DarkCyan, "Add Company Name:");
-            string companyName = Console.ReadLine();
-            Helpers.WriteToConsole(ConsoleColor.DarkCyan, "Add Company Address:");
-            string address = Console.ReadLine();
-            Company company = new Company();
-            company.Name = companyName;
-            company.Address = address;
+            try
+            {
+                Helpers.WriteToConsole(ConsoleColor.DarkCyan, "Add Company Name:");
+                string companyName = Console.ReadLine();
+                Helpers.WriteToConsole(ConsoleColor.DarkCyan, "Add Company Address:");
+                string address = Console.ReadLine();
+                Company company = new Company();
+                company.Name = companyName;
+                company.Address = address;
 
-            var createResult = companyService.Create(company);
-            if (createResult != null)
-            {
-                Helpers.WriteToConsole(ConsoleColor.DarkGreen, $"{company.ID}. Company Name: {companyName} , Addess: {company.Address} - was Successfully Created !\n");
+                var createResult = companyService.Create(company);
+                if (createResult != null)
+                {
+                    Helpers.WriteToConsole(ConsoleColor.DarkGreen, $"{company.ID}. Company Name: {companyName} , Addess: {company.Address} - was Successfully Created !\n");
+                }
+                else
+                {
+                    Helpers.WriteToConsole(ConsoleColor.Red, "Something Went Wrong !\n");
+                }
             }
-            else
+            catch(Exception ex)
             {
-                Helpers.WriteToConsole(ConsoleColor.Red, "Something Went Wrong !\n");
+                Console.WriteLine(ex.Message);
             }
         }
 

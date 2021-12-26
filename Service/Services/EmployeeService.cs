@@ -39,31 +39,74 @@ namespace Service.Services
             }
         }
 
-        public void Delete(Employee employee)
+        public bool Delete(Employee employee)
         {
             var deleteResult = employeeRepository.Get(m => m.Name == employee.Name && m.Surname == employee.Surname);
             employeeRepository.Delete(employee);
+            return employeeRepository.Delete(employee);
         }
 
-        public List<Employee> GetAllEmployes()
+        public List<Employee> GetEmployesByAge(string age)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return employeeRepository.GetAll(m => m.Age == age);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+            
         }
 
-        public List<Employee> GetAllEmployesByName(string name)
+        public List<Employee> GetAllEmployesCompanyID(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return employeeRepository.GetAll(m => m.Company.ID == id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
 
 
         public Employee GetEmployeeByID(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return employeeRepository.Get(m => m.ID == id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+            
         }
 
         public Employee Update(int id, Employee employee)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var idResult = GetEmployeeByID(id);
+                employee.ID = idResult.ID;
+                employeeRepository.Update(employee);
+                return employee;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+          
+            
+
+
         }
         
     }

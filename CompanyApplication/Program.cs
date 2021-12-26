@@ -61,9 +61,11 @@ namespace CompanyApplication
                             break;
 
                         case (int)MyEnum.Menu.UpdateEmployee:
+                            employeeController.Update();
                             break;
 
                         case (int)MyEnum.Menu.GetEmployeeByID:
+                            employeeController.GetByID();
                             break;
 
                         case (int)MyEnum.Menu.DeleteEmployee:
@@ -71,9 +73,11 @@ namespace CompanyApplication
                             break;
 
                         case (int)MyEnum.Menu.GetEmployeeByAge:
+                            employeeController.GetByAge();
                             break;
 
                         case (int)MyEnum.Menu.GetAllEmployeeByCompanyID:
+                            employeeController.GetAllEmployesCompanyID();
                             break;
                     }
                     
